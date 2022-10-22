@@ -24,7 +24,7 @@ function callApi(texto) {
     console.log("transpose");
     body = {
     texto: texto,
-    semitonos: 2 //saxo alto to tenor
+    semitonos: 5 //saxo alto to tenor
   }
 } else {
   console.log("translate");
