@@ -35,7 +35,7 @@ function callApi(texto) {
   console.log(body);
   
   //Call to API
-  axios.post("http://api.fastnotes.polverini.com.ar/"+props.endPoint, body).then(response => {
+  axios.post("https://api.fastnotes.polverini.com.ar/"+props.endPoint, body).then(response => {
   console.log(response.data.transp);
   set_output_note(response.data.transp);
   
