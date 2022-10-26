@@ -19,6 +19,14 @@ function callApi(texto) {
   // javascript if props.endpoint contains "transpose" then call transpose
   // else if props.endpoint contains "translate" then call translate
   // else call error
+
+  console.log("callApi: " + texto);
+  // sanitize input get out - 
+  texto = texto.replace(/-/g, " ");
+  texto = texto.replace(/–/g, " ");
+  texto = texto.replace(/  +/g, ' ');
+  console.log("callApi2: " + texto);
+
   let body='';
   if (props.endPoint.includes("transpose")) {
     console.log("transpose");
@@ -37,7 +45,11 @@ function callApi(texto) {
   //Call to API
   axios.post("https://api.fastnotes.polverini.com.ar/"+props.endPoint, body).then(response => {
   console.log(response.data.transp);
-  set_output_note(response.data.transp);
+  let output = [''];
+  response.data.transp.forEach(element => {
+    output.push(element + ' - ');
+  });
+  set_output_note(output);
   
 })
 }
