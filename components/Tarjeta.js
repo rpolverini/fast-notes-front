@@ -11,6 +11,7 @@ import axios from 'axios'
 
 export const Tarjeta = (props) => {
   const [input_note, set_input_note ] = useState('');
+  const [semitonos, set_semitonos ] = useState(0);
   const [output_note, set_output_note ] = useState('');
 
   
@@ -32,7 +33,7 @@ function callApi(texto) {
     console.log("transpose");
     body = {
     texto: texto,
-    semitonos: 5 //saxo alto to tenor
+    semitonos: props.semitonos
   }
 } else {
   console.log("translate");
@@ -55,8 +56,9 @@ function callApi(texto) {
 }
 
 const transpose_onenote = () => {
+
   callApi(input_note);
-  
+ 
  };
 
 
@@ -66,6 +68,7 @@ const transpose_onenote = () => {
     <div className={styles.card}>
             <h2>{props.title}</h2>
             <p >{props.description}</p>
+            <p>{props.semitonos}</p>
             <input type="text" value={input_note} onChange={e => set_input_note(e.target.value)} />
             <h2>Result: {output_note}</h2>
 
